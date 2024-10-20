@@ -17,9 +17,12 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    private HomeFragment homeFragment;
 
     private void bindingView() {
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
+        if (homeFragment == null)
+            homeFragment = new HomeFragment();
     }
 
     private void bindingAcion(){
@@ -27,11 +30,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onAttachFragment(@NonNull Fragment fragment) {
+        super.onAttachFragment(fragment);
+        if (fragment instanceof HomeFragment) {
+            homeFragment = (HomeFragment) fragment;
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -39,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bindingView();
+        bindingAcion();
     }
 
     private BottomNavigationView.OnItemSelectedListener navListener =
@@ -55,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new HomeFragment();
 
                     // Load the selected fragment
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentContainerView, selectedFragment).commit();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, selectedFragment)
+                            .commit();
 
                     return true;
                 }
