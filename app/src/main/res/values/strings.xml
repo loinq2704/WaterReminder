@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">UNNN</string>
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today_intake">Hôm nay đã uống: 0 ml</string>
+    <string name="edt_intake">Bạn đã uống … ml nước</string>
+    <string name="btn_add">Uống</string>
+    <string name="toast_not_number">Hãy nhập một số nguyên dương</string>
 </resources>
