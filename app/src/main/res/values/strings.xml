@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">UNNN</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="today_intake">Hôm nay đã uống: 0 ml</string>
     <string name="edt_intake">Bạn đã uống … ml nước</string>
     <string name="btn_add">Uống</string>
     <string name="toast_not_number">Hãy nhập một số nguyên dương</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="water_intake_information">Nước là một chất dinh dưỡng thiết yếu ở mọi lứa tuổi, vì vậy việc giữ cho cơ thể đủ nước là yếu tố quan trọng cho sức khỏe tốt. Nước chiếm khoảng 60% trọng lượng cơ thể của một người trưởng thành. Chúng ta uống nước khi cảm thấy khát, đây là tín hiệu chính cảnh báo khi cơ thể thiếu nước. Chúng ta cũng thường uống nước trong bữa ăn để hỗ trợ quá trình tiêu hóa. Tuy nhiên, đôi khi chúng ta uống không phải vì những yếu tố này mà dựa trên suy nghĩ về lượng nước cần uống. Một trong những câu nói phổ biến là “uống 8 ly nước mỗi ngày”, nhưng điều này có thể không phù hợp với tất cả mọi người.\n\nNguồn: https://www.hsph.harvard.edu/nutritionsource/water/#:~:text=General%20recommendations,exposed%20to%20very%20warm%20climates.</string>
+
+    <string name="water_benefits_information">1. Nước bôi trơn các khớp\n2. Nước tạo ra nước bọt và chất nhầy\n3. Nước vận chuyển oxy khắp cơ thể\n4. Nước cải thiện sức khỏe và sắc đẹp của da\n5. Nước bảo vệ não, tủy sống và các mô nhạy cảm khác\n6. Nước điều hòa nhiệt độ cơ thể\n7. Hệ tiêu hóa phụ thuộc vào nước\n8. Nước giúp cơ thể thải độc\n9. Nước giúp duy trì huyết áp\n10. Đường hô hấp cần nước\n11. Nước giúp các khoáng chất và chất dinh dưỡng dễ hấp thụ hơn\n12. Nước ngăn ngừa tổn thương thận\n13. Nước tăng cường hiệu suất trong khi tập thể dục\n14. Nước giúp giảm cân\n15. Nước làm giảm nguy cơ say rượu\n\nNguồn: https://www.medicalnewstoday.com/articles/290814#benefits</string>
+
+    <string name="stored_weight_text">Stored weight: %1$d lbs</string>
 </resources>
