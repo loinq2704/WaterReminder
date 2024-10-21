@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/card_background"
+        android:elevation="4dp"
+        android:layout_margin="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp">
+
+        <!-- Title for Information -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Thông Tin Nước Uống"
+            android:textSize="26sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"/> <!-- Sử dụng font sans-serif -->
+
+        <!-- Information text -->
+        <TextView
+            android:id="@+id/information_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water_intake_information"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="8dp"
+            android:autoLink="web"
+            android:fontFamily="sans-serif"
+        android:textColorLink="@color/link_color"/>
+
+        <!-- Section title for Benefits -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Lợi Ích Của Việc Uống Nước"
+            android:textSize="26sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"/> <!-- Sử dụng font sans-serif -->
+
+        <!-- Benefits text -->
+        <TextView
+            android:id="@+id/benefits_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water_benefits_information"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="8dp"
+            android:fontFamily="sans-serif"
+        android:autoLink="web"
+        android:textColorLink="@color/link_color"/>
+
+    </LinearLayout>
+
+</ScrollView>
