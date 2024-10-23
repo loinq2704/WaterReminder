@@ -19,12 +19,15 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private HomeFragment homeFragment;
     private InformationFragment informationFragment;
+    private SettingsFragment settingsFragment;
     private void bindingView() {
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
         if (homeFragment == null)
             homeFragment = new HomeFragment();
         if (informationFragment == null)
             informationFragment = new InformationFragment();
+        if (settingsFragment == null)
+            settingsFragment = new SettingsFragment();
     }
 
     private void bindingAcion(){
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (fragment instanceof InformationFragment) {
             informationFragment = (InformationFragment) fragment;
+        }
+        else if (fragment instanceof SettingsFragment) {
+            settingsFragment = (SettingsFragment) fragment;
         }
     }
 
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     else if(item.getItemId() == R.id.nav_infor)
                         selectedFragment = new InformationFragment();
                     else if(item.getItemId() == R.id.nav_settings)
-                        selectedFragment = new HomeFragment();
+                        selectedFragment = new SettingsFragment();
 
                     // Load the selected fragment
                     if (selectedFragment != null) {
