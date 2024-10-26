@@ -1,5 +1,7 @@
-package com.loinq.unnn;
+package com.loinq.unnn.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,20 +15,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.loinq.unnn.R;
+import com.loinq.unnn.util.Constant;
 
 public class SettingsFragment extends Fragment {
+
+    private int weight;
 
     private EditText editTextWeight;
     private Button buttonSave;
     private Button buttonExport;
     private TextView textViewStoredWeight;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     private void bindingView(){
         editTextWeight = getView().findViewById(R.id.editTextWeight);
         buttonSave = getView().findViewById(R.id.buttonSave);
         buttonExport = getView().findViewById(R.id.buttonExport);
         textViewStoredWeight = getView().findViewById(R.id.textViewStoredWeight);
+
+        sharedPreferences = getActivity().getSharedPreferences(Constant.APP_NAME, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        weight = sharedPreferences.getInt(Constant.WEIGHT, 0);
+        textViewStoredWeight.setText("Cân nặng đã lưu: " + weight + " kg");
     }
 
     private void bindingAction() {
@@ -43,6 +56,9 @@ public class SettingsFragment extends Fragment {
         if (!weight.isEmpty()) {
             textViewStoredWeight.setText("Cân nặng đã lưu: " + weight + " kg");
         }
+
+        editor.putInt(Constant.WEIGHT, Integer.parseInt(weight));
+        editor.apply();
     }
 
     public SettingsFragment() {
