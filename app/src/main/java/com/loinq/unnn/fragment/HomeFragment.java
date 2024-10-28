@@ -44,11 +44,13 @@ public class HomeFragment extends Fragment {
 
         todayIntake = sharedPreferences.getInt(Constant.TODAY_INTAKE, 0);
         weight = sharedPreferences.getInt(Constant.WEIGHT, 0);
-        expectedIntake = weight * 35;
+        if (weight != 0){
+            expectedIntake = weight * 35;
 
-        progressBar.setProgress(todayIntake / expectedIntake * 100);
-        String formattedString = getString(R.string.today_intake, todayIntake);
-        txtTodayIntake.setText(formattedString + "/" + expectedIntake + "ml");
+            progressBar.setProgress(todayIntake / expectedIntake * 100);
+            String formattedString = getString(R.string.today_intake, todayIntake);
+            txtTodayIntake.setText(formattedString + "/" + expectedIntake + "ml");
+        }
     }
 
     private void bindingAction(){
