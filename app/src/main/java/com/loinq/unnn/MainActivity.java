@@ -1,7 +1,9 @@
 package com.loinq.unnn;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.loinq.unnn.Notification.NotificationReceiver;
 import com.loinq.unnn.fragment.HomeFragment;
 import com.loinq.unnn.fragment.InformationFragment;
 import com.loinq.unnn.fragment.SettingsFragment;
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         weight = sharedPreferences.getInt(Constant.WEIGHT, 0);
     }
 
-    private void bindingAcion(){
+    private void bindingAcion() {
         bottomNavigationView.setOnItemSelectedListener(navListener);
     }
 
@@ -60,11 +63,9 @@ public class MainActivity extends AppCompatActivity {
         super.onAttachFragment(fragment);
         if (fragment instanceof HomeFragment) {
             homeFragment = (HomeFragment) fragment;
-        }
-        else if (fragment instanceof InformationFragment) {
+        } else if (fragment instanceof InformationFragment) {
             informationFragment = (InformationFragment) fragment;
-        }
-        else if (fragment instanceof SettingsFragment) {
+        } else if (fragment instanceof SettingsFragment) {
             settingsFragment = (SettingsFragment) fragment;
         }
     }
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         bindingView();
         bindingAcion();
-        scheduleDailyReset();
+     NotificationReceiver.scheduleNextReminder(this);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -97,11 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
-                    if(item.getItemId() == R.id.nav_home)
+                    if (item.getItemId() == R.id.nav_home)
                         selectedFragment = new HomeFragment(weight);
-                    else if(item.getItemId() == R.id.nav_infor)
+                    else if (item.getItemId() == R.id.nav_infor)
                         selectedFragment = new InformationFragment();
-                    else if(item.getItemId() == R.id.nav_settings)
+                    else if (item.getItemId() == R.id.nav_settings)
                         selectedFragment = new SettingsFragment();
 
                     // Load the selected fragment
@@ -116,21 +117,26 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
-    private void scheduleDailyReset() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 0);   // Set the time to midnight
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-
-        Intent intent = new Intent(this, Receiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        if (alarmManager != null) {
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent);
-        }
-    }
 }
+//    @SuppressLint("ScheduleExactAlarm")
+//    private void scheduleReminder30p() {
+//        // Intent để kích hoạt BroadcastReceiver
+//        Intent intent = new Intent(this, NotificationReceiver.class);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+//
+//        // Thời gian thông báo (ví dụ: mỗi ngày vào 9:00 sáng)
+////        Calendar calendar = Calendar.getInstance();
+////        calendar.set(Calendar.HOUR_OF_DAY, 9);  // 9:00 sáng
+////        calendar.set(Calendar.MINUTE, 0);
+////        calendar.set(Calendar.SECOND, 0);
+//        long triggerTime = System.currentTimeMillis() + 5000;
+//        // Sử dụng AlarmManager để lên lịch nhắc nhở
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        if (alarmManager != null) {
+//            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent); // Đặt alarm sau 5 giây
+//        }
+//        }
+//    }
+
+
+
