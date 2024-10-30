@@ -7,15 +7,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loinq.unnn.R;
+import com.loinq.unnn.db.repository.DrinkRepository;
+import com.loinq.unnn.db.viewModel.DrinkViewModel;
 import com.loinq.unnn.util.Constant;
 
 public class SettingsFragment extends Fragment {
@@ -29,6 +32,7 @@ public class SettingsFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private DrinkViewModel drinkViewModel;
 
     private void bindingView(){
         editTextWeight = getView().findViewById(R.id.editTextWeight);
@@ -48,7 +52,8 @@ public class SettingsFragment extends Fragment {
     }
 
     private void onButtonExportClick(View view) {
-
+        drinkViewModel.exportToCSV(requireContext());
+        Toast.makeText(requireContext(),"Data exported to CSV",Toast.LENGTH_SHORT).show();
     }
 
     private void onButtonSaveClick(View view) {
@@ -71,13 +76,16 @@ public class SettingsFragment extends Fragment {
         bindingView();
         bindingAction();
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        // Khởi tạo ViewModel với phạm vi của Fragment
+        drinkViewModel = new ViewModelProvider(this).get(DrinkViewModel.class);
+
+        // Sử dụng drinkViewModel ở đây
+        drinkViewModel.addSampleData();
+        return view;
     }
 }
