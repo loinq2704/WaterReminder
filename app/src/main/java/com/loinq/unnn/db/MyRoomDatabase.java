@@ -11,6 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.loinq.unnn.db.dao.DrinkDao;
 import com.loinq.unnn.db.entity.Drink;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,6 +56,16 @@ public abstract class MyRoomDatabase extends RoomDatabase {
 //                dao.insert(word);
 //                word = new Word("World");
 //                dao.insert(word);
+
+                DrinkDao dao = INSTANCE.drinkDao();
+
+                Drink drink1 = new Drink(250, new Date());
+                Drink drink2 = new Drink(500, new Date());
+                Drink drink3 = new Drink(750, new Date());
+
+                dao.insert(drink1);
+                dao.insert(drink2);
+                dao.insert(drink3);
             });
         }
     };

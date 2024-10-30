@@ -30,7 +30,4 @@ public class DrinkViewModel extends AndroidViewModel {
     public void exportToCSV(Context context, List<Drink> drinks) {
         mRepository.exportToCSV(context, drinks);
     }
-    public void addSampleData() {
-        mRepository.addSampleData();
-    }
 }

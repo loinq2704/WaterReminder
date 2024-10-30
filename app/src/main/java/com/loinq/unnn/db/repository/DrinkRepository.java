@@ -38,17 +38,6 @@ public class DrinkRepository {
             mDrinkDao.insert(drink);
         });
     }
-    public void addSampleData() {
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            // Tạo dữ liệu mẫu
-            Drink drink1 = new Drink(250, new Date());
-            Drink drink2 = new Drink(500, new Date());
-            Drink drink3 = new Drink(750, new Date());
-
-            // Thêm dữ liệu vào database
-            mDrinkDao.insert(drink1, drink2, drink3);
-        });
-    }
 
     public void exportToCSV(Context context, List<Drink> drinks) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> {
