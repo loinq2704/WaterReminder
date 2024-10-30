@@ -91,9 +91,6 @@ public class SettingsFragment extends Fragment {
 
         // Khởi tạo ViewModel với phạm vi của Fragment
         drinkViewModel = new ViewModelProvider(this).get(DrinkViewModel.class);
-
-        // Sử dụng drinkViewModel ở đây
-        drinkViewModel.addSampleData();
         return view;
     }
 }
