@@ -52,7 +52,7 @@ public class DrinkRepository {
 
     public void exportToCSV(Context context, List<Drink> drinks) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            File csvFile = new File(context.getFilesDir(), "drinks.csv");
+            File csvFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "drinks.csv");
             try (FileWriter writer = new FileWriter(csvFile)) {
                 writer.append("ID,Intake,Date\n");
                 for (Drink drink : drinks) {
