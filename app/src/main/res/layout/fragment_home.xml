@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="300dp"
-    tools:context=".fragment.HomeFragment">
-
+    tools:context=".fragment.HomeFragment"
+    android:background="@mipmap/ic_test_background_background">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -1,15 +1,10 @@
 package com.loinq.unnn;
 
-import android.annotation.SuppressLint;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
+
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +19,8 @@ import com.loinq.unnn.Notification.NotificationReceiver;
 import com.loinq.unnn.fragment.HomeFragment;
 import com.loinq.unnn.fragment.InformationFragment;
 import com.loinq.unnn.fragment.SettingsFragment;
-import com.loinq.unnn.receiver.Receiver;
 import com.loinq.unnn.util.Constant;
 
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
