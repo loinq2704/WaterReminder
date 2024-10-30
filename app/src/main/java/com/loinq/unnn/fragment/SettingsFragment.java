@@ -52,9 +52,17 @@ public class SettingsFragment extends Fragment {
     }
 
     private void onButtonExportClick(View view) {
-        drinkViewModel.exportToCSV(requireContext());
-        Toast.makeText(requireContext(),"Data exported to CSV",Toast.LENGTH_SHORT).show();
+        // Quan sát LiveData từ ViewModel
+        drinkViewModel.getAllDrinks().observe(getViewLifecycleOwner(), drinks -> {
+            if (drinks != null && !drinks.isEmpty()) {
+                drinkViewModel.exportToCSV(requireContext(), drinks);
+                Toast.makeText(requireContext(), "Data exported to CSV", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(requireContext(), "No data available to export", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     private void onButtonSaveClick(View view) {
         String weight = editTextWeight.getText().toString();

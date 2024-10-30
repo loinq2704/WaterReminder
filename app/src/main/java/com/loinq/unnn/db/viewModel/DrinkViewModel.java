@@ -3,7 +3,6 @@ package com.loinq.unnn.db.viewModel;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -24,12 +23,12 @@ public class DrinkViewModel extends AndroidViewModel {
         mAllDrinks = mRepository.getAll();
     }
 
-    LiveData<List<Drink>> getAllDrinks() { return mAllDrinks; }
+    public LiveData<List<Drink>> getAllDrinks() { return mAllDrinks; }
 
     public void insert(Drink word) { mRepository.insert(word); }
 
-    public void exportToCSV(Context context) {
-        mRepository.exportToCSV(context);
+    public void exportToCSV(Context context, List<Drink> drinks) {
+        mRepository.exportToCSV(context, drinks);
     }
     public void addSampleData() {
         mRepository.addSampleData();
