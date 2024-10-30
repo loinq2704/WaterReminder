@@ -50,15 +50,8 @@ public class DrinkRepository {
         });
     }
 
-    public void exportToCSV(Context context) {
+    public void exportToCSV(Context context, List<Drink> drinks) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            List<Drink> drinks = mDrinkDao.getAll().getValue();
-            Log.d("exportToCSV", "Number of drinks: " + (drinks != null ? drinks.size() : 0));
-            if (drinks == null || drinks.isEmpty()) {
-                Log.e("exportToCSV", "No data available to export.");
-                return;
-            }
-
             File csvFile = new File(context.getFilesDir(), "drinks.csv");
             try (FileWriter writer = new FileWriter(csvFile)) {
                 writer.append("ID,Intake,Date\n");
@@ -70,10 +63,12 @@ public class DrinkRepository {
                             .append(new SimpleDateFormat("yyyy-MM-dd").format(drink.getDate()))
                             .append('\n');
                 }
+                Log.d("exportToCSV", "Data exported successfully to: " + csvFile.getAbsolutePath());
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e("exportToCSV", "Failed to export data", e);
             }
         });
     }
+
 
 }
