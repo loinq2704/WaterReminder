@@ -41,7 +41,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     }
 
-    private void createNotificationChannel(Context context) {
+    public static void createNotificationChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Water Reminder";
             String description = "Channel for water drinking reminder";
