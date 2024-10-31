@@ -27,8 +27,7 @@
         </activity>
         <receiver android:name=".Notification.NotificationReceiver"
             android:exported="true"/>
-
-
+        <receiver android:name=".receiver.Receiver"/>
 
     </application>
 
