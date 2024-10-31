@@ -1,7 +1,10 @@
 package com.loinq.unnn;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,7 +22,10 @@ import com.loinq.unnn.Notification.NotificationReceiver;
 import com.loinq.unnn.fragment.HomeFragment;
 import com.loinq.unnn.fragment.InformationFragment;
 import com.loinq.unnn.fragment.SettingsFragment;
+import com.loinq.unnn.receiver.Receiver;
 import com.loinq.unnn.util.Constant;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
