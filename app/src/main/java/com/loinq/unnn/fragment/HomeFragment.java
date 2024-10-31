@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
         if (weight != 0){
             expectedIntake = weight * 35;
 
-            progressBar.setProgress(todayIntake / expectedIntake * 100);
+            progressBar.setProgress(todayIntake * 100 / expectedIntake);
             String formattedString = getString(R.string.today_intake, todayIntake);
             txtTodayIntake.setText(formattedString + "/" + expectedIntake + "ml");
         }
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
             todayIntake += intakeInt;
             editor.putInt(Constant.TODAY_INTAKE, todayIntake);
             editor.apply();
-            progressBar.setProgress(todayIntake / expectedIntake * 100);
+            progressBar.setProgress(todayIntake * 100 / expectedIntake);
             String formattedString = getString(R.string.today_intake, todayIntake);
             txtTodayIntake.setText(formattedString + "/" + expectedIntake + "ml");
         }catch (Exception e){
